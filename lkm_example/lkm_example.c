@@ -87,7 +87,7 @@ static int __init lkm_example_init(void)
     /* Set the msg_ptr to the buffer */
     msg_ptr = msg_buffer;
     /* Try to register character device */
-    major_num = register_chrdev(0, "lkm_example", &file_ops);
+    major_num = register_chrdev(0, DEVICE_NAME, &file_ops);
     if (major_num < 0)
     {
         printk(KERN_ALERT "Could not register device: %d\n", major_num);
@@ -95,7 +95,7 @@ static int __init lkm_example_init(void)
     }
     else
     {
-        printk(KERN_INFO "lkm_example module loaded with device major number %d\n", major_num);
+        printk(KERN_INFO DEVICE_NAME " module loaded with device major number %d\n", major_num);
         return 0;
     }
 }
