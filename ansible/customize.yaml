@@ -22,4 +22,17 @@
         state: present
         regexp: '^%wheel\s+ALL'
         line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+
+    - name: Install packages with dnf
+      dnf:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - meld
     
+    - name: Upgrade all packages to latest with dnf
+      dnf:
+        name: "*"
+        state: latest
+
+
