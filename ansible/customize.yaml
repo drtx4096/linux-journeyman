@@ -1,0 +1,25 @@
+---
+- name: Customize working environment
+  hosts: localhost
+  become: True
+  tasks:
+  
+    - name: Check for user variable
+      fail: msg="Must define variable 'user'"
+      when: user is not defined
+    
+    - name: Add user to groups
+      user:
+        name: "{{ user }}"
+        append: True
+        groups:
+          - vboxsf
+          - wheel
+
+    - name: Enable passwordless SUDO for the wheel group
+      lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: '^%wheel\s+ALL'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    

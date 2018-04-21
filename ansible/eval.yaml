@@ -1,0 +1,59 @@
+---
+- name: Configure for evaluation
+  hosts: localhost
+  become: True
+  tasks:
+  
+    - include_tasks: tasks/dumpall.yaml
+    
+    - name: Check for user variable
+      fail: msg="Must define variable 'user'"
+      when: user is not defined
+    
+    - name: Update vim-minimal
+      dnf:
+        name: vim-minimal
+        state: latest
+
+    - name: Install packages with dnf
+      dnf:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - nasm
+        - make
+        - gcc-c++
+        - vim
+        - man-pages
+        - strace
+        - gdb
+        - hexedit
+        - git
+        - gvim
+        - qhexedit2
+        - ddd
+
+    - name: Download peda v1.1 from GitHub
+      git:
+        accept_hostkey: True
+        dest: /opt/peda
+        force: True
+        repo: https://github.com/longld/peda
+        version: v1.1
+
+    - name: Configure user's GDB to use peda
+      lineinfile:
+        state: present
+        create: True
+        line: "source /opt/peda/peda.py"
+        path: "~{{ user }}/.gdbinit"
+        owner: "{{ user }}"
+        group: "{{ user }}"
+
+    
+        
+        
+        
+
+
+

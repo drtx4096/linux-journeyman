@@ -8,3 +8,6 @@ Module.symvers
 .*.cmd
 modules.order
 
+# GDB/PEDA artifacts
+.gdb_history
+
