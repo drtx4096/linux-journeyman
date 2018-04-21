@@ -36,6 +36,8 @@
         - ddd
         - "kernel-devel-{{ kernel_release.stdout }}"
         - "@lxde-desktop"
+        - libgcc.i686
+        - glibc-devel.i686
 
     - name: Download peda v1.1 from GitHub
       git:
