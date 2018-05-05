@@ -29,10 +29,7 @@
         state: latest
       with_items:
         - meld
-    
-    - name: Upgrade all packages to latest with dnf
-      dnf:
-        name: "*"
-        state: latest
+
+    - import_tasks: tasks/install-vscode.yaml
 
 
