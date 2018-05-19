@@ -27,6 +27,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}",
+                "/usr/src/kernels/4.13.16-100.fc25.x86_64/arch/x86/include",
+                "/usr/src/kernels/4.13.16-100.fc25.x86_64/include",
                 "/usr/include/c++/6.4.1",
                 "/usr/include/c++/6.4.1/x86_64-redhat-linux",
                 "/usr/include/c++/6.4.1/backward",
@@ -39,6 +41,8 @@
             "browse": {
                 "path": [
                     "${workspaceFolder}",
+                    "/usr/src/kernels/4.13.16-100.fc25.x86_64/arch/x86/include",
+                    "/usr/src/kernels/4.13.16-100.fc25.x86_64/include",
                     "/usr/include/c++/6.4.1",
                     "/usr/include/c++/6.4.1/x86_64-redhat-linux",
                     "/usr/include/c++/6.4.1/backward",
@@ -75,5 +79,5 @@
             }
         }
     ],
-    "version": 3
+    "version": 4
 }
